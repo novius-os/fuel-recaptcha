@@ -146,7 +146,7 @@ class ReCaptcha
 			$server = \Config::get('recaptcha.server');
 		}
 
-		$html = \View::factory('form')
+		$html = \View::forge('form')
 			->set('server', $server)
 			->set('public_key', \Config::get('recaptcha.public_key'));
 
@@ -160,7 +160,7 @@ class ReCaptcha
 	 */
 	function _qsencode($data)
 	{
-		return http_build_query($data);
+		return http_build_query($data, null, '&');
 	}
 
 	/**
